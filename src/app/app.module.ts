@@ -12,6 +12,8 @@ import { LoginComponent } from './views/login/login.component';
 import { TvshowFormComponent } from './components/tvshow-form/tvshow-form.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { ErrorsFormComponent } from './components/errors-form/errors-form.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,11 @@ import { ErrorsFormComponent } from './components/errors-form/errors-form.compon
     LoginComponent,
     TvshowFormComponent,
     CommentFormComponent,
-    ErrorsFormComponent
+    ErrorsFormComponent,
+    HeaderComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
