@@ -1,1 +1,37 @@
-<p>tvshows-list works!</p>
+<div class="tvshows-list-component">
+  <h2>Annuaire des séries tv</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Diff. originale</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let tvshow of tvshows;
+          let index = index;
+          let isFirst = first;
+          let isOdd = odd
+        "
+      >
+        <th scope="row">{{ tvshow.id }}</th>
+        <td>{{ tvshow.title }}</td>
+        <td>{{ tvshow.release | date: "dd/MM/yyyy" }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-custom"
+            [routerLink]="['/tvshow', tvshow.id]"
+          >
+            Détails
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

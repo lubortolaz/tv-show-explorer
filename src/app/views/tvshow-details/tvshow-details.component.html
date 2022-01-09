@@ -1,1 +1,60 @@
-<p>tvshow-details works!</p>
+<div class="tvshow-detail-component">
+  <h2>Détails de la série</h2>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-3">
+          <img src="{{ tvshow.urlImg }}" class="card-img-top" width="100" />
+        </div>
+        <div class="col-lg-9">
+          <h2 class="title">{{ tvshow.title }}</h2>
+          <p class="info">
+            <span
+              >Diffusion originale :
+              {{ tvshow.release | date: "dd/MM/yyyy" }}</span
+            >
+            <span>{{ tvshow.nbSeasons }} saison(s)</span>
+          </p>
+
+          <p class="desc">{{ tvshow.description }}</p>
+
+          <div class="review">
+            <h4>Notre critique</h4>
+
+            <p>{{ tvshow.review }}</p>
+          </div>
+
+          <button class="btn btn-custom">modifier</button>
+
+          <button class="btn btn-custom">supprimer</button>
+        </div>
+      </div>
+    </div>
+    <div class="comments card-body">
+      <h4>Vos commentaires :</h4>
+      <div class="comment-box">
+        <p>
+          Excellente série ! Très bien écrite, la réa et l’animation sont ouf …
+          ca fait trop plaisir !
+        </p>
+        <p>Par Machin Truc, le 15/05/2013</p>
+      </div>
+      <div class="comment-box">
+        <p>
+          Du jamais vu, lyrique, flamboyant. Une très grande œuvre artistique et
+          technique. Une histoire ambitieuse de par sa narration explosive et
+          ses nombreux personnages complexes, pour un résultat rythmé et
+          passionnant.
+        </p>
+        <p>Par Machin Truc, le 15/05/2013</p>
+      </div>
+      <div class="comment-box">
+        <p>
+          On frôle la perfection. Ils sont Fortiches. J’espère qu’il y aura
+          rapidement une édition blu-ray 4K.
+        </p>
+        <p>Par Machin Truc, le 15/05/2013</p>
+      </div>
+    </div>
+  </div>
+</div>
