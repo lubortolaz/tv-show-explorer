@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TvshowService } from '../../services/tvshow/tvshow.service';
 import { Tvshow } from '../../models/tvshow.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tvshows-list',
@@ -10,9 +11,18 @@ import { Tvshow } from '../../models/tvshow.model';
 export class TvshowsListComponent implements OnInit {
   tvshows!: Tvshow[];
 
-  constructor(private tvshowService: TvshowService) {}
+  constructor(private tvshowService: TvshowService, private router: Router) {}
 
   ngOnInit(): void {
     this.tvshows = this.tvshowService.tvshows;
+  }
+
+  onClickBtnDelete(id: number) {
+    if (confirm('Supprimer la série ?')) {
+      this.tvshowService.deleteTvshowById(id).then(() => {
+        //this.tvshows.splice(index, 1);
+        this.router.navigateByUrl('/books');
+      });
+    }
   }
 }

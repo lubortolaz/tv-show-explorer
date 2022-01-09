@@ -11,24 +11,34 @@
       </tr>
     </thead>
     <tbody>
-      <tr
-        *ngFor="
-          let tvshow of tvshows;
-          let index = index;
-          let isFirst = first;
-          let isOdd = odd
-        "
-      >
+      <tr *ngIf="tvshows.length === 0">
+        <td rowspan="4">Il n'y a pas de séries actuellement.</td>
+      </tr>
+      <tr *ngFor="let tvshow of tvshows; let index = index">
         <th scope="row">{{ tvshow.id }}</th>
         <td>{{ tvshow.title }}</td>
         <td>{{ tvshow.release | date: "dd/MM/yyyy" }}</td>
-        <td>
+        <td class="text-end">
           <button
             type="button"
             class="btn btn-custom"
             [routerLink]="['/tvshow', tvshow.id]"
           >
             Détails
+          </button>
+          <button
+            type="button"
+            class="btn btn-custom"
+            [routerLink]="['/tvshow', 'edit', tvshow.id]"
+          >
+            Modifier
+          </button>
+          <button
+            type="button"
+            class="btn btn-custom"
+            (click)="onClickBtnDelete(tvshow.id)"
+          >
+            Supprimer
           </button>
         </td>
       </tr>

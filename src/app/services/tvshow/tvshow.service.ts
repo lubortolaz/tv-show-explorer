@@ -24,6 +24,18 @@ export class TvshowService {
     });
   }
 
+  deleteTvshowById(id: number) {
+    return new Promise<void>((resolve, reject) => {
+      for (let [index, tvshow] of this.tvshows.entries()) {
+        if (tvshow.id === id) {
+          this.tvshows.splice(index, 1);
+          resolve();
+          break;
+        }
+      }
+    });
+  }
+
   createFakeListOfSuperTvshows() {
     this.tvshows.push(
       new Tvshow(
