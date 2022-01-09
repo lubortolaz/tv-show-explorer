@@ -8,7 +8,11 @@
     <div class="card-body">
       <div class="row">
         <div class="col-lg-3">
-          <img src="{{ tvshow.urlImg }}" class="card-img-top" width="100" />
+          <img
+            src="{{ tvshow.urlImg }}"
+            class="card-img-top img-fluid"
+            alt="{{ tvshow.title }}"
+          />
         </div>
         <div class="col-lg-9">
           <h2 class="title">{{ tvshow.title }}</h2>
@@ -28,14 +32,30 @@
             <p>{{ tvshow.review }}</p>
           </div>
 
-          <button class="btn btn-custom">modifier</button>
+          <button
+            type="button"
+            class="btn btn-custom"
+            [routerLink]="['/tvshow', 'edit', tvshow.id]"
+          >
+            Modifier
+          </button>
 
-          <button class="btn btn-custom">supprimer</button>
+          <button
+            type="button"
+            class="btn btn-custom"
+            (click)="onClickBtnDelete(tvshow.id)"
+          >
+            Supprimer
+          </button>
         </div>
       </div>
     </div>
     <div class="comments card-body">
-      <h4>Vos commentaires :</h4>
+      <h4>
+        Vos commentaires
+        <span *ngIf="comments.length > 0">({{ comments.length }})</span>
+        :
+      </h4>
       <p *ngIf="comments.length === 0">
         Il n'y a pas encore de commentaire pour cette série...
       </p>

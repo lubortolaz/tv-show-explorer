@@ -25,6 +25,33 @@ export class TvshowService {
     });
   }
 
+  add(tvshow: Tvshow) {
+    return new Promise<void>((resolve, reject) => {
+      // set id
+      if (this.tvshows.length === 0) {
+        tvshow.id = 0;
+      } else {
+        tvshow.id = this.tvshows[this.tvshows.length - 1].id + 1;
+      }
+
+      this.tvshows.push(tvshow);
+
+      resolve();
+    });
+  }
+
+  edit(editedTvshow: Tvshow) {
+    return new Promise<void>((resolve, reject) => {
+      for (let [index, tvshow] of this.tvshows.entries()) {
+        if (tvshow.id === editedTvshow.id) {
+          this.tvshows[index] = editedTvshow;
+          resolve();
+          break;
+        }
+      }
+    });
+  }
+
   deleteTvshowById(id: number) {
     return new Promise<void>((resolve, reject) => {
       for (let [index, tvshow] of this.tvshows.entries()) {
@@ -84,6 +111,42 @@ export class TvshowService {
         'Le sorceleur Geralt, un chasseur de monstres mutant, se bat pour trouver sa place dans un monde où les humains se révèlent souvent plus vicieux que les bêtes.',
         'https://img.betaseries.com/YC8yfFHBxGoAM198MWV0gVMghvE=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2Fbc2dbf6560de1d6c322636631f546c4e.jpg',
         "Il est difficile d'entrer dans The Witcher, entre les noms fantaisistes étranges, la structure de l'histoire hasardeuse et une trame de fond compliquée. C'est beaucoup à avaler d'un coup. Mais on finit par se laisser avoir et par vouloir en savoir plus sur la suite. Si vous avez envie de vous laisser séduire, n'hésitez pas."
+      )
+    );
+
+    this.tvshows.push(
+      new Tvshow(
+        5,
+        "The Handmaid's Tale",
+        new Date('04/27/2017'),
+        4,
+        "Dans une société dystopique et totalitaire au très bas taux de natalité, les femmes sont divisées en trois catégories : les Epouses, qui dominent la maison, les Marthas, qui l'entretiennent, et les Servantes, dont le rôle est la reproduction. ",
+        'https://img.betaseries.com/1iU6Q4yb_SFoR04E148ohOVmJt0=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2F60165477869340a61467d8870d723e1c.jpg',
+        "Un thriller spéculatif magnifiquement produit, un récit édifiant qui mérite toutes les louanges, en particulier à l'égard d'Elizabeth Moss. Peut-être la première série de Hulu absolument essentielle. "
+      )
+    );
+
+    this.tvshows.push(
+      new Tvshow(
+        6,
+        'The Expanse',
+        new Date('12/14/2015'),
+        4,
+        "Au 23e siècle, les hommes ont colonisé le système solaire. Les Nations-Unies contrôlent la Terre. Mars est devenue une puissance militaire indépendante et les autres planètes dépendent des ressources de la ceinture d'astéroïdes, où les conditions de vie sont pénibles et les habitants contraints de travailler durement. Au fil des ans, les tensions entre la Terre, Mars et la Ceinture ont pris une telle ampleur qu'une simple étincelle pourrait déclencher une guerre. Dans ce contexte tendu, la disparition d'une jeune femme pousse un détective endurci et le capitaine d'un vaisseau à traverser le système solaire pour révéler la plus grande conspiration de l'Histoire de l'humanité.",
+        'https://img.betaseries.com/9rGshAuzmhQdhmhAH7N9yr0LZYI=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2F870a226c7cc1939b767517aae6d9733b.jpg',
+        "Ambiance à la Blade runner au sol, à la Alien dans les coins sombres et Star Wars dans l'espace, enquête digne des films policiers des années 50 et politique de Babylon 5, tout y est."
+      )
+    );
+
+    this.tvshows.push(
+      new Tvshow(
+        7,
+        'WandaVision',
+        new Date('01/15/2017'),
+        1,
+        "Wanda Maximoff et Vision, deux super-héros menant une vie des plus normales, commencent à se douter que celle-ci n'est pas aussi parfaite qu’elle en a l'air.",
+        'https://img.betaseries.com/t48Vs4HKgFfoS2to-hruz0H2Qrw=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2Ff350e3ad53e472d5eaed667b1554cd1f.jpg',
+        'La forme choisie de la sitcom qui évolue à chaque épisode consacré à une décennie spécifique, et ces anomalies qui viennent perturber la bonne humeur ambiante, font de « WandaVision » une série à part, étonnante. Elizabeth Olsen et Paul Bettany reprennent leurs rôles de la saga « Avengers » avec brio. '
       )
     );
 

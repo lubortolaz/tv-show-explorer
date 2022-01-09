@@ -1,1 +1,13 @@
-<p>tvshow-new works!</p>
+<div class="d-flex">
+  <button routerLink="/tvshows" class="btn btn-custom">Retour</button>
+  <h2>Nouvelle série</h2>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <app-tvshow-form
+      buttonLabel="Ajouter"
+      (formSubmitted)="onsubmitNewTvshow($event)"
+    ></app-tvshow-form>
+  </div>
+</div>

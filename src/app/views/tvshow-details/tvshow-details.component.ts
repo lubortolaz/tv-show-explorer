@@ -42,4 +42,13 @@ export class TvshowDetailsComponent implements OnInit {
       this.comments.push(comment);
     });
   }
+
+  onClickBtnDelete(id: number) {
+    if (confirm('Supprimer la série et tous ses commentaires ?')) {
+      this.tvshowService.deleteTvshowById(id).then(() => {
+        //this.tvshows.splice(index, 1);
+        this.router.navigateByUrl('/tvshows');
+      });
+    }
+  }
 }

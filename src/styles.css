@@ -29,6 +29,7 @@ button.btn-custom {
   padding: 5px 18px;
   margin-right: 10px;
   color: #ffffff;
+
   display: inline-block;
   font: normal normal 14px/1 "Open Sans", sans-serif;
   text-align: center;
@@ -39,13 +40,33 @@ button.btn-custom:hover {
   color: #ffffff;
 }
 
+button.btn-custom2 {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 0;
+  padding: 5px 18px;
+  margin-right: 10px;
+  color: #ffffff;
+  display: inline-block;
+  font: normal normal 14px/1 "Open Sans", sans-serif;
+  text-align: center;
+  font-weight: bolder;
+  font-size: xx-large;
+}
+button.btn-custom2:hover {
+  background: #fff;
+  color: #000;
+}
+
 a:hover {
   background: rgba(83, 83, 83, 0.8);
 }
 
-.tvshow-detail-component > h2,
-.tvshows-list-component > h2 {
+h2 {
   color: #ae82f4;
+}
+
+.tvshow-detail-component h2.title {
+  color: #fff;
 }
 
 .tvshows-list-component table thead {
@@ -84,4 +105,18 @@ a:hover {
 .tvshow-detail-component .comment-box p:last-child {
   opacity: 0.5;
   font-size: 0.9em;
+}
+
+.tvshow-form-component input,
+.tvshow-form-component textarea,
+.comment-form-component textarea {
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.tvshow-form-component label {
+  padding-top: 1em;
+}
+.comment-form-component {
+  margin: 1em 2em;
 }

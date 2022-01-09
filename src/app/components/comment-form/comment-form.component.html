@@ -1,20 +1,23 @@
-<form [formGroup]="form" (ngSubmit)="onSubmitForm()">
-  <div class="form-group">
-    <input
-      id="content"
-      name="content"
-      formControlName="content"
-      class="form-control"
-      [(ngModel)]="newComment.content"
-    />
-  </div>
-  <div class="form-group text-center my-3">
-    <button
-      type="submit"
-      class="btn btn-primary btn-sm"
-      [disabled]="form.invalid"
-    >
-      ok
-    </button>
-  </div>
-</form>
+<div class="comment-form-component">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmitForm()"
+    class="row align-items-center justify-content-center"
+  >
+    <div class="form-group col-lg-11">
+      <textarea
+        id="content"
+        name="content"
+        formControlName="content"
+        class="form-control"
+        placeholder="Votre commentaire..."
+        [(ngModel)]="newComment.content"
+      ></textarea>
+    </div>
+    <div class="form-group text-center col-lg-1">
+      <button type="submit" class="btn btn-custom2" [disabled]="form.invalid">
+        +
+      </button>
+    </div>
+  </form>
+</div>

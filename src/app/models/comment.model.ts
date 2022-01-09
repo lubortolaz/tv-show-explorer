@@ -44,7 +44,6 @@ export class Comment {
   }
 
   public set content(content: string) {
-    console.log('export class Comment --- set content' + content);
     this._content = content;
   }
 

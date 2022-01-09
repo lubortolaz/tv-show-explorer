@@ -18,7 +18,7 @@ export class TvshowsListComponent implements OnInit {
   }
 
   onClickBtnDelete(id: number) {
-    if (confirm('Supprimer la série ?')) {
+    if (confirm('Supprimer la série et tous ses commentaires ?')) {
       this.tvshowService.deleteTvshowById(id).then(() => {
         //this.tvshows.splice(index, 1);
         //this.router.navigateByUrl('/tvshows');

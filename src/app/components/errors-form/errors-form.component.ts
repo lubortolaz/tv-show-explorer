@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-errors-form',
   templateUrl: './errors-form.component.html',
-  styleUrls: ['./errors-form.component.css']
+  styleUrls: ['./errors-form.component.css'],
 })
 export class ErrorsFormComponent implements OnInit {
+  @Input() group?: FormGroup;
+  @Input() controlLabel?: string;
+  @Input() controlName?: string;
 
-  constructor() { }
+  control?: FormControl;
+
+  constructor() {}
 
   ngOnInit(): void {
+    if (this.group && this.controlName) {
+      this.control = this.group.controls[this.controlName] as FormControl;
+    }
   }
-
 }

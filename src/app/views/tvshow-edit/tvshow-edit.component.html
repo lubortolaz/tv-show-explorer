@@ -1,1 +1,14 @@
-<p>tvshow-edit works!</p>
+<div class="d-flex">
+  <button routerLink="/tvshows" class="btn btn-custom">Retour</button>
+  <h2>Modifier la série</h2>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <app-tvshow-form
+      [tvshowToEdit]="this.tvshow"
+      buttonLabel="Modifier"
+      (formSubmitted)="onsubmitEditedTvshow($event)"
+    ></app-tvshow-form>
+  </div>
+</div>

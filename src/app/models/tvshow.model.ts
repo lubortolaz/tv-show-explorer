@@ -7,14 +7,14 @@ export class Tvshow {
   private _urlImg: string;
   private _review: string;
 
-  constructor(_id: number, _title: string, _release: Date, _nbSeasons: number, _description: string, _urlImg: string, _review: string) {
-    this._id = _id
-    this._title = _title
-    this._release = _release
-    this._nbSeasons = _nbSeasons
-    this._description = _description
-    this._urlImg = _urlImg
-    this._review = _review
+  constructor(id: number, title: string, release: Date, nbSeasons: number, description: string, urlImg: string, review: string) {
+    this._id = id;
+    this._title = title;
+    this._release = release;
+    this._nbSeasons = nbSeasons;
+    this._description = description;
+    this._urlImg = urlImg;
+    this._review = review;
   }
 
   public get id(): number {
