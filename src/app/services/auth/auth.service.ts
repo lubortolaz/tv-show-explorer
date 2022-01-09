@@ -11,6 +11,10 @@ export class AuthService {
     this.token = new BehaviorSubject<string>('');
   }
 
+  getUsername() {
+    return 'Administrateur';
+  }
+
   /**
    * Try to log the user
    * @param username username to check

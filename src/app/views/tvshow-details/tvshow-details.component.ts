@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Tvshow } from 'src/app/models/tvshow.model';
 import { TvshowService } from '../../services/tvshow/tvshow.service';
+import { CommentService } from '../../services/tvshow/comment.service';
+import { Comment } from 'src/app/models/comment.model';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-tvshow-details',
@@ -10,10 +13,14 @@ import { TvshowService } from '../../services/tvshow/tvshow.service';
 })
 export class TvshowDetailsComponent implements OnInit {
   tvshow!: Tvshow;
+  comments!: Comment[];
 
   constructor(
     private route: ActivatedRoute,
-    private tvshowService: TvshowService
+    private tvshowService: TvshowService,
+    private commentService: CommentService,
+
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -23,6 +30,16 @@ export class TvshowDetailsComponent implements OnInit {
       this.tvshow = tvshow;
     });
 
-    console.log(this.tvshow);
+    this.commentService
+      .getAllCommentsByIdTvShow(+id!)
+      .then((comments: Comment[]) => {
+        this.comments = comments;
+      });
+  }
+
+  onSubmitNewComment(newComment: Comment) {
+    this.commentService.addComment(newComment).then((comment: Comment) => {
+      this.comments.push(comment);
+    });
   }
 }

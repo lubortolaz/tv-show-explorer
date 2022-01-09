@@ -1,5 +1,9 @@
-<div class="tvshow-detail-component">
-  <h2>Détails de la série</h2>
+<div *ngIf="tvshow" class="tvshow-detail-component">
+  <div class="d-flex">
+    <button routerLink="/tvshows" class="btn btn-custom">Retour</button>
+    <h2>Détails de la série</h2>
+  </div>
+
   <div class="card">
     <div class="card-body">
       <div class="row">
@@ -32,29 +36,21 @@
     </div>
     <div class="comments card-body">
       <h4>Vos commentaires :</h4>
-      <div class="comment-box">
+      <p *ngIf="comments.length === 0">
+        Il n'y a pas encore de commentaire pour cette série...
+      </p>
+      <div *ngFor="let comment of comments" class="comment-box">
+        <p>{{ comment.content }}</p>
         <p>
-          Excellente série ! Très bien écrite, la réa et l’animation sont ouf …
-          ca fait trop plaisir !
+          Par {{ comment.author }}, le
+          {{ comment.dateCreation | date: "dd/MM/yyyy" }}
         </p>
-        <p>Par Machin Truc, le 15/05/2013</p>
       </div>
-      <div class="comment-box">
-        <p>
-          Du jamais vu, lyrique, flamboyant. Une très grande œuvre artistique et
-          technique. Une histoire ambitieuse de par sa narration explosive et
-          ses nombreux personnages complexes, pour un résultat rythmé et
-          passionnant.
-        </p>
-        <p>Par Machin Truc, le 15/05/2013</p>
-      </div>
-      <div class="comment-box">
-        <p>
-          On frôle la perfection. Ils sont Fortiches. J’espère qu’il y aura
-          rapidement une édition blu-ray 4K.
-        </p>
-        <p>Par Machin Truc, le 15/05/2013</p>
-      </div>
+
+      <app-comment-form
+        [idTvShow]="tvshow.id"
+        (formSubmitted)="onSubmitNewComment($event)"
+      ></app-comment-form>
     </div>
   </div>
 </div>

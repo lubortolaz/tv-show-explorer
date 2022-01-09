@@ -1,1 +1,20 @@
-<p>comment-form works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmitForm()">
+  <div class="form-group">
+    <input
+      id="content"
+      name="content"
+      formControlName="content"
+      class="form-control"
+      [(ngModel)]="newComment.content"
+    />
+  </div>
+  <div class="form-group text-center my-3">
+    <button
+      type="submit"
+      class="btn btn-primary btn-sm"
+      [disabled]="form.invalid"
+    >
+      ok
+    </button>
+  </div>
+</form>

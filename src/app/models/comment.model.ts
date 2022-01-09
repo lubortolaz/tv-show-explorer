@@ -4,36 +4,42 @@ export class Comment {
   private _dateCreation: Date;
   private _author: string;
   private _content: string;
+  private _idTvShow: number;
 
-  constructor(_id: number, _dateCreation: Date, _author: string, _content: string) {
-    this._id = _id
-    this._dateCreation = _dateCreation
-    this._author = _author
-    this._content = _content
-  }
+  constructor(id: number, dateCreation: Date, author: string, content: string, idTvShow: number) {
+
+    console.log("Nouveau commentaire : " + id + " " + dateCreation + " " +  author + " " +  content + " " +  idTvShow)
+
+    this._id = id;
+		this._dateCreation = dateCreation;
+		this._author = author;
+		this._content = content;
+		this._idTvShow = idTvShow;
+	}
+
 
   public get id(): number {
-      return this._id;
+    return this._id;
   }
 
   public set id(id: number) {
-      this._id = id;
+    this._id = id;
   }
 
   public get dateCreation(): Date {
-      return this._dateCreation;
+    return this._dateCreation;
   }
 
   public set dateCreation(dateCreation: Date) {
-      this._dateCreation = dateCreation;
+    this._dateCreation = dateCreation;
   }
 
   public get author(): string {
-      return this._author;
+    return this._author;
   }
 
   public set author(author: string) {
-      this._author = author;
+    this._author = author;
   }
 
   public get content(): string {
@@ -41,7 +47,16 @@ export class Comment {
   }
 
   public set content(content: string) {
-      this._content = content;
+    console.log('export class Comment --- set content' + content);
+    this._content = content;
+  }
+
+  public get idTvShow(): number {
+    return this._idTvShow;
+  }
+
+  public set idTvShow(idTvShow: number) {
+    this._idTvShow = idTvShow;
   }
 
 }
