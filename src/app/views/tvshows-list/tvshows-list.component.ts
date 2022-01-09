@@ -21,7 +21,7 @@ export class TvshowsListComponent implements OnInit {
     if (confirm('Supprimer la série ?')) {
       this.tvshowService.deleteTvshowById(id).then(() => {
         //this.tvshows.splice(index, 1);
-        this.router.navigateByUrl('/books');
+        //this.router.navigateByUrl('/tvshows');
       });
     }
   }

@@ -43,6 +43,23 @@ export class CommentService {
     });
   }
 
+  /**
+   * Delete all the comments of a series whose id is passed in parameter
+   * @param idTvShow : id of the tv show
+   * @returns Promise<void>
+   */
+  deleteAllCommentsByIdTvshow(idTvShow: number): Promise<void> {
+    // delete
+    return new Promise<void>((resolve, reject) => {
+      for (let [index, comment] of this.comments.entries()) {
+        if (comment.idTvShow === idTvShow) {
+          this.comments.splice(index, 1);
+          resolve();
+        }
+      }
+    });
+  }
+
   createFakeListOfComments() {
     let i = 0;
     this.comments.push(

@@ -7,9 +7,6 @@ export class Comment {
   private _idTvShow: number;
 
   constructor(id: number, dateCreation: Date, author: string, content: string, idTvShow: number) {
-
-    console.log("Nouveau commentaire : " + id + " " + dateCreation + " " +  author + " " +  content + " " +  idTvShow)
-
     this._id = id;
 		this._dateCreation = dateCreation;
 		this._author = author;

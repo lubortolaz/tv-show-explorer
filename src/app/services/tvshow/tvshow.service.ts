@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Tvshow } from '../../models/tvshow.model';
+import { CommentService } from './comment.service';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +8,7 @@ import { Tvshow } from '../../models/tvshow.model';
 export class TvshowService {
   tvshows: Tvshow[];
 
-  constructor() {
+  constructor(private commentService: CommentService) {
     this.tvshows = [];
     this.createFakeListOfSuperTvshows();
   }
@@ -29,6 +30,7 @@ export class TvshowService {
       for (let [index, tvshow] of this.tvshows.entries()) {
         if (tvshow.id === id) {
           this.tvshows.splice(index, 1);
+          this.commentService.deleteAllCommentsByIdTvshow(id);
           resolve();
           break;
         }
