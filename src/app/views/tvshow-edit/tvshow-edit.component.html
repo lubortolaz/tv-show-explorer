@@ -1,13 +1,20 @@
-<div class="d-flex">
-  <button routerLink="/tvshows" class="btn btn-custom">Retour</button>
-  <h2>Modifier la série</h2>
-</div>
+<h2>Modifier la série</h2>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/tvshows">Annuaire</a></li>
+    <li class="breadcrumb-item active">
+      <a [routerLink]="['/tvshow', tvshow.id]">{{ tvshow.title }}</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Modification</li>
+  </ol>
+</nav>
 
 <div class="card">
   <div class="card-body">
     <app-tvshow-form
       [tvshowToEdit]="this.tvshow"
-      buttonLabel="Modifier"
+      buttonLabel="Enregistrer"
       (formSubmitted)="onsubmitEditedTvshow($event)"
     ></app-tvshow-form>
   </div>

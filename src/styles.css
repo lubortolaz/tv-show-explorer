@@ -57,6 +57,27 @@ button.btn-custom2:hover {
   color: #000;
 }
 
+button.btn-custom3 {
+  background: transparent;
+  color: #ffffff;
+  display: inline-block;
+  font: normal normal 14px/1 "Open Sans", sans-serif;
+  text-align: center;
+  font-weight: bolder;
+  font-size: xx-large;
+}
+button.btn-custom3:hover {
+  color: #ae82f4;
+}
+
+button.btn-del {
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 a:hover {
   background: rgba(83, 83, 83, 0.8);
 }
@@ -95,7 +116,7 @@ h2 {
 }
 .tvshow-detail-component .comment-box {
   margin: 1em 2em;
-  padding: 4px 12px 0 12px;
+  padding: 4px 12px 0 10px;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }

@@ -69,7 +69,7 @@ export class TvshowFormComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(5),
-          Validators.maxLength(255),
+          Validators.maxLength(500),
         ],
       ],
       urlImg: [null],
@@ -78,7 +78,7 @@ export class TvshowFormComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(5),
-          Validators.maxLength(255),
+          Validators.maxLength(500),
         ],
       ],
     });

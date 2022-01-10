@@ -102,10 +102,13 @@
         <div class="form-group text-center my-3">
           <button
             type="submit"
-            class="btn btn-primary btn-sm"
+            class="btn btn-custom"
             [disabled]="form.invalid"
           >
             {{ buttonLabel }}
+          </button>
+          <button class="btn btn-custom" [routerLink]="['/tvshows']">
+            Annuler
           </button>
         </div>
       </form>

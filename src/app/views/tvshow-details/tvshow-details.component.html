@@ -1,8 +1,16 @@
 <div *ngIf="tvshow" class="tvshow-detail-component">
   <div class="d-flex">
-    <button routerLink="/tvshows" class="btn btn-custom">Retour</button>
     <h2>Détails de la série</h2>
   </div>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/tvshows">Annuaire</a></li>
+      <li class="breadcrumb-item active" aria-current="page">
+        {{ tvshow.title }}
+      </li>
+    </ol>
+  </nav>
 
   <div class="card">
     <div class="card-body">
@@ -59,8 +67,14 @@
       <p *ngIf="comments.length === 0">
         Il n'y a pas encore de commentaire pour cette série...
       </p>
-      <div *ngFor="let comment of comments" class="comment-box">
+      <div
+        *ngFor="let comment of comments"
+        class="comment-box position-relative"
+      >
         <p>{{ comment.content }}</p>
+        <button class="btn btn-del" (click)="onClickDeleteComment(comment.id)">
+          x
+        </button>
         <p>
           Par {{ comment.author }}, le
           {{ comment.dateCreation | date: "dd/MM/yyyy" }}

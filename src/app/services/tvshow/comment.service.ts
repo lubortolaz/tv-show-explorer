@@ -73,6 +73,23 @@ export class CommentService {
   }
 
   /**
+   * Delete one comment whose id is passed in parameter
+   * @param idTvShow : id of the tv show
+   * @returns Promise<void>
+   */
+  deleteCommentById(idComment: number): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      for (let [index, comment] of this.comments.entries()) {
+        if (comment.id === idComment) {
+          this.comments.splice(index, 1);
+          resolve();
+          break;
+        }
+      }
+    });
+  }
+
+  /**
    * For the tests, this function creates a list of fake comments
    */
   createFakeListOfComments() {

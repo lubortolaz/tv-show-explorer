@@ -19,7 +19,6 @@ export class TvshowDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private tvshowService: TvshowService,
     private commentService: CommentService,
-
     private router: Router
   ) {}
 
@@ -61,5 +60,20 @@ export class TvshowDetailsComponent implements OnInit {
         this.router.navigateByUrl('/tvshows');
       });
     }
+  }
+
+  /**
+   * Function called when the super user click on the button delete a comment
+   * @param id : number (id of the comment to delete)
+   */
+  onClickDeleteComment(id: number) {
+    this.commentService.deleteCommentById(id).then(() => {
+      for (let [index, comment] of this.comments.entries()) {
+        if (comment.id === id) {
+          this.comments.splice(index, 1);
+          break;
+        }
+      }
+    });
   }
 }

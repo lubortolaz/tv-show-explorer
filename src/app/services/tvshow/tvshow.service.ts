@@ -37,8 +37,8 @@ export class TvshowService {
    * Add a Tvshow to the list
    * @param tvshow : Tvshow
    */
-  addNewTvshow(tvshow: Tvshow): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
+  addNewTvshow(tvshow: Tvshow): Promise<number> {
+    return new Promise<number>((resolve, reject) => {
       // set id
       if (this.tvshows.length === 0) {
         tvshow.id = 0;
@@ -46,7 +46,7 @@ export class TvshowService {
         tvshow.id = this.tvshows[this.tvshows.length - 1].id + 1;
       }
       this.tvshows.push(tvshow);
-      resolve();
+      resolve(tvshow.id);
     });
   }
 
@@ -54,12 +54,12 @@ export class TvshowService {
    * Update the tv show passed in parameters
    * @param editedTvshow : Tvshow
    */
-  editTvshow(editedTvshow: Tvshow): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
+  editTvshow(editedTvshow: Tvshow): Promise<number> {
+    return new Promise<number>((resolve, reject) => {
       for (let [index, tvshow] of this.tvshows.entries()) {
         if (tvshow.id === editedTvshow.id) {
           this.tvshows[index] = editedTvshow;
-          resolve();
+          resolve(editedTvshow.id);
           break;
         }
       }
@@ -168,6 +168,42 @@ export class TvshowService {
         "Wanda Maximoff et Vision, deux super-héros menant une vie des plus normales, commencent à se douter que celle-ci n'est pas aussi parfaite qu’elle en a l'air.",
         'https://img.betaseries.com/t48Vs4HKgFfoS2to-hruz0H2Qrw=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2Ff350e3ad53e472d5eaed667b1554cd1f.jpg',
         'La forme choisie de la sitcom qui évolue à chaque épisode consacré à une décennie spécifique, et ces anomalies qui viennent perturber la bonne humeur ambiante, font de « WandaVision » une série à part, étonnante. Elizabeth Olsen et Paul Bettany reprennent leurs rôles de la saga « Avengers » avec brio. '
+      )
+    );
+
+    this.tvshows.push(
+      new Tvshow(
+        8,
+        'Vikings ',
+        new Date('03/04/2013'),
+        6,
+        "Les exploits d'un groupe de vikings de la fin du 8ème siècle jusqu'au milieu du 11ème, mené par Ragnar Lodbrok, l'un des plus populaires héros viking de tous les temps, qui a régné quelques temps sur le Danemark et la Suède... ",
+        'https://img.betaseries.com/KRWPWgSVQbLOgiceIYKQGrvXwjE=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2F4c508877342713606486f5bafae12d50.jpg',
+        "Vikings est une création de Michael Hirst, lequel avait déjà imaginé The Tudors pour Showtime, et sa nouvelle série est clairement destinée à occuper le même terrain que celui de Game of Thrones. Ce qu'ont ces deux shows, et qui manque cruellement à Vikings, est une vraie intrigue. Pour la plupart, les personnages présentés inspirent peu d'intérêt. "
+      )
+    );
+
+    this.tvshows.push(
+      new Tvshow(
+        9,
+        'The Walking Dead',
+        new Date('11/01/2010'),
+        11,
+        "Le policier Rick Grimes se réveille à l'hôpital après un long coma. Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants. Parti sur les traces de sa femme et de son fils, Rick arrive à Atlanta où, avec un groupe de rescapés, il va devoir apprendre à survivre.",
+        'https://img.betaseries.com/9P3Jb6WB4V7gy3a9spB2qlM1DvY=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2Fd338e649f57a342598ec430862798ad3.jpg',
+        "En tant que scénariste et réalisateur, Frank Darabont apporte une touche d'humanité à une histoire classique de zombies qui évite le manichéisme habituel 'eux' contre 'nous'. Visuellement, on se croirait au cinéma."
+      )
+    );
+
+    this.tvshows.push(
+      new Tvshow(
+        10,
+        'Game of Thrones',
+        new Date('11/01/2010'),
+        9,
+        "Il y a très longtemps, à une époque oubliée, une force a détruit l'équilibre des saisons. Dans un pays où l'été peut durer plusieurs années et l'hiver toute une vie, des forces sinistres et surnaturelles se pressent aux portes du Royaume des Sept Couronnes. La confrérie de la Garde de Nuit, protégeant le Royaume de toute créature pouvant provenir d'au-delà du Mur protecteur, n'a plus les ressources nécessaires pour assurer la sécurité de tous. Après un été de dix années, un hiver rigoureux s'abat sur le Royaume avec la promesse d'un avenir des plus sombres. Pendant ce temps, complots et rivalités se jouent sur le continent pour s'emparer du Trône de Fer, le symbole du pouvoir absolu. ",
+        'https://img.betaseries.com/ehxvwkVLO2NcKcpevl3lfk_5c-M=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2F4d09984be7bf0c385b21e2974bc12e8b.jpg',
+        'Game of Thrones excelle à de multiples niveaux - la splendide distribution (capable de délivrer même les répliques les plus tarabiscotées), ses intrigues de palais complexes, son humour subtil et sa tension constante. Par contre on attends toujours la neuvième saison...'
       )
     );
 

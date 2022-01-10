@@ -29,8 +29,8 @@ export class TvshowEditComponent implements OnInit {
    * @param tvshow
    */
   onsubmitEditedTvshow(tvshow: Tvshow) {
-    this.tvshowService.editTvshow(tvshow).then(() => {
-      this.router.navigateByUrl('/tvshows');
+    this.tvshowService.editTvshow(tvshow).then((idTvShow: number) => {
+      this.router.navigateByUrl('/tvshow/' + idTvShow);
     });
   }
 }
