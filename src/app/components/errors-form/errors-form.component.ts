@@ -15,6 +15,9 @@ export class ErrorsFormComponent implements OnInit {
 
   constructor() {}
 
+  /**
+   * Initialization tasks
+   */
   ngOnInit(): void {
     if (this.group && this.controlName) {
       this.control = this.group.controls[this.controlName] as FormControl;

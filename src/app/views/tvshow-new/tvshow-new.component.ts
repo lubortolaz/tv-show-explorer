@@ -18,7 +18,7 @@ export class TvshowNewComponent implements OnInit {
    * @param newTvshow : Tvshow (the new tv show)
    */
   onsubmitNewTvshow(newTvshow: Tvshow) {
-    this.tvshowService.add(newTvshow).then(() => {
+    this.tvshowService.addNewTvshow(newTvshow).then(() => {
       this.router.navigateByUrl('/tvshows');
     });
   }

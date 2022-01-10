@@ -23,10 +23,13 @@ export class TvshowDetailsComponent implements OnInit {
     private router: Router
   ) {}
 
+  /**
+   * Initialization tasks
+   */
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.tvshowService.getById(+id!).then((tvshow: Tvshow) => {
+    this.tvshowService.getTvshowById(+id!).then((tvshow: Tvshow) => {
       this.tvshow = tvshow;
     });
 
@@ -37,12 +40,20 @@ export class TvshowDetailsComponent implements OnInit {
       });
   }
 
+  /**
+   * Call the Comment service when a new comment is submitted
+   * @param newComment : Comment
+   */
   onSubmitNewComment(newComment: Comment) {
     this.commentService.addComment(newComment).then((comment: Comment) => {
       this.comments.push(comment);
     });
   }
 
+  /**
+   * Function called when the user click on the button delete the tvshow
+   * @param id : number (id of the tv show to delete)
+   */
   onClickBtnDelete(id: number) {
     if (confirm('Supprimer la série et tous ses commentaires ?')) {
       this.tvshowService.deleteTvshowById(id).then(() => {

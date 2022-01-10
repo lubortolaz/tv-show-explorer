@@ -13,10 +13,17 @@ export class TvshowsListComponent implements OnInit {
 
   constructor(private tvshowService: TvshowService, private router: Router) {}
 
+  /**
+   * Initialization tasks
+   */
   ngOnInit(): void {
     this.tvshows = this.tvshowService.tvshows;
   }
 
+  /**
+   * Function called when the user click on the delete button
+   * @param id
+   */
   onClickBtnDelete(id: number) {
     if (confirm('Supprimer la série et tous ses commentaires ?')) {
       this.tvshowService.deleteTvshowById(id).then(() => {

@@ -14,7 +14,6 @@ export class Comment {
 		this._idTvShow = idTvShow;
 	}
 
-
   public get id(): number {
     return this._id;
   }

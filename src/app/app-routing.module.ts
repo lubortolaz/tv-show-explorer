@@ -6,6 +6,7 @@ import { TvshowsListComponent } from './views/tvshows-list/tvshows-list.componen
 import { TvshowDetailsComponent } from './views/tvshow-details/tvshow-details.component';
 import { TvshowNewComponent } from './views/tvshow-new/tvshow-new.component';
 import { TvshowEditComponent } from './views/tvshow-edit/tvshow-edit.component';
+import { ErrorComponent } from './views/error/error.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -29,6 +30,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: TvshowEditComponent,
   },
+  { path: '404', component: ErrorComponent },
+  { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({

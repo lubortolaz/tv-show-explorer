@@ -17,7 +17,9 @@ export class HeaderComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  // additional initialization tasks
+  /**
+   * Initialization tasks
+   */
   ngOnInit(): void {
     this.tokenSub = this.authService.token.subscribe((token) => {
       this.isConnected = !!token;
@@ -33,7 +35,9 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  // custom cleanup that needs to occur when the instance is destroyed
+  /**
+   * Custom cleanup that needs to occur when the instance is destroyed
+   */
   ngOnDestroy(): void {
     // we stop observing the token
     this.tokenSub.unsubscribe();

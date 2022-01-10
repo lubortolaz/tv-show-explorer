@@ -17,15 +17,19 @@ export class TvshowEditComponent implements OnInit {
     private tvshowService: TvshowService
   ) {
     const id = this.route.snapshot.paramMap.get('id');
-    this.tvshowService.getById(+id!).then((tvshow: Tvshow) => {
+    this.tvshowService.getTvshowById(+id!).then((tvshow: Tvshow) => {
       this.tvshow = tvshow;
     });
   }
 
   ngOnInit(): void {}
 
+  /**
+   * Function called when the user submit the updated ts show
+   * @param tvshow
+   */
   onsubmitEditedTvshow(tvshow: Tvshow) {
-    this.tvshowService.edit(tvshow).then(() => {
+    this.tvshowService.editTvshow(tvshow).then(() => {
       this.router.navigateByUrl('/tvshows');
     });
   }

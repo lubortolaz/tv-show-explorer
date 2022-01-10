@@ -9,10 +9,18 @@ export class CommentService {
   comments!: Comment[];
 
   constructor(private authService: AuthService) {
+    // initialization of the list of comments about the tv shows
     this.comments = [];
+
+    // create a fake list of comments for the tv shows
     this.createFakeListOfComments();
   }
 
+  /**
+   * Get all the comments of a tv show which id is passed on parameter
+   * @param idTvShow : number (id of a tv show)
+   * @returns : Comment[]
+   */
   getAllCommentsByIdTvShow(idTvShow: number): Promise<Comment[]> {
     return new Promise<Comment[]>((resolve, reject) => {
       let commentsList = [];
@@ -25,6 +33,11 @@ export class CommentService {
     });
   }
 
+  /**
+   * Add a comment to the list of comments
+   * @param newComment : Comment
+   * @returns Comment (the new comment is returned for the display)
+   */
   addComment(newComment: Comment) {
     // set id
     if (this.comments.length === 0) {
@@ -36,7 +49,7 @@ export class CommentService {
     // set author
     newComment.author = this.authService.getUsername();
 
-    // save new comment
+    // save the new comment
     return new Promise<Comment>((resolve, reject) => {
       this.comments.push(newComment);
       resolve(newComment);
@@ -59,6 +72,9 @@ export class CommentService {
     });
   }
 
+  /**
+   * For the tests, this function creates a list of fake comments
+   */
   createFakeListOfComments() {
     this.comments.push(
       new Comment(

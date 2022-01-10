@@ -9,11 +9,19 @@ export class TvshowService {
   tvshows: Tvshow[];
 
   constructor(private commentService: CommentService) {
+    // list of tv shows
     this.tvshows = [];
+
+    // for developpement mode, create a fake list of tv shows
     this.createFakeListOfSuperTvshows();
   }
 
-  getById(id: number) {
+  /**
+   * Return the tv show which id is passed in paramater
+   * @param id : number (id of the tv show)
+   * @returns Tvshow
+   */
+  getTvshowById(id: number): Promise<Tvshow> {
     return new Promise<Tvshow>((resolve, reject) => {
       for (let [index, tvshow] of this.tvshows.entries()) {
         if (tvshow.id === id) {
@@ -25,7 +33,11 @@ export class TvshowService {
     });
   }
 
-  add(tvshow: Tvshow) {
+  /**
+   * Add a Tvshow to the list
+   * @param tvshow : Tvshow
+   */
+  addNewTvshow(tvshow: Tvshow): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       // set id
       if (this.tvshows.length === 0) {
@@ -33,14 +45,16 @@ export class TvshowService {
       } else {
         tvshow.id = this.tvshows[this.tvshows.length - 1].id + 1;
       }
-
       this.tvshows.push(tvshow);
-
       resolve();
     });
   }
 
-  edit(editedTvshow: Tvshow) {
+  /**
+   * Update the tv show passed in parameters
+   * @param editedTvshow : Tvshow
+   */
+  editTvshow(editedTvshow: Tvshow): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       for (let [index, tvshow] of this.tvshows.entries()) {
         if (tvshow.id === editedTvshow.id) {
@@ -52,7 +66,11 @@ export class TvshowService {
     });
   }
 
-  deleteTvshowById(id: number) {
+  /**
+   * Delete the tv show which id is passed in parameter
+   * @param id : number (id of a tv show)
+   */
+  deleteTvshowById(id: number): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       for (let [index, tvshow] of this.tvshows.entries()) {
         if (tvshow.id === id) {
@@ -65,6 +83,9 @@ export class TvshowService {
     });
   }
 
+  /**
+   * This function creates a fake list of tv show in the absence of a database
+   */
   createFakeListOfSuperTvshows() {
     this.tvshows.push(
       new Tvshow(

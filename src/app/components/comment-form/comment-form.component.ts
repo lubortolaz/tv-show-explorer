@@ -23,6 +23,9 @@ export class CommentFormComponent implements OnInit {
     this.formSubmitted = new EventEmitter<Comment>();
   }
 
+  /**
+   * Initialization tasks
+   */
   ngOnInit(): void {
     this.initForm();
   }
@@ -46,6 +49,7 @@ export class CommentFormComponent implements OnInit {
    * Submission of the form
    */
   onSubmitForm() {
+    // check if the form is valid
     if (this.form.valid) {
       this.formSubmitted.emit(this.newComment);
       this.initForm();
