@@ -1,11 +1,15 @@
 <header class="position-relative">
+  <img
+    src="../assets/img/logo.png"
+    class="mx-auto my-4 d-block"
+    alt="TV-SHOW EXPLORER"
+  />
 
-  <h1 class="text-center my-4 pt-5">TV-SHOW EXPLORER</h1>
-
-  <button *ngIf="isConnected" class="btn btn-custom position-absolute top-0 end-0" (click)="onClickSignout()">
+  <button
+    *ngIf="isConnected"
+    class="btn btn-custom position-absolute top-0 end-0"
+    (click)="onClickSignout()"
+  >
     déconnexion
   </button>
-
 </header>
-
-

@@ -14,12 +14,16 @@ export class TvshowDetailsComponent implements OnInit {
   tvshow!: Tvshow;
   comments!: Comment[];
 
+  nbComments: number;
+
   constructor(
     private route: ActivatedRoute,
     private tvshowService: TvshowService,
     private commentService: CommentService,
     private router: Router
-  ) {}
+  ) {
+    this.nbComments = 3;
+  }
 
   /**
    * Initialization tasks
@@ -36,6 +40,13 @@ export class TvshowDetailsComponent implements OnInit {
       .then((comments: Comment[]) => {
         this.comments = comments;
       });
+  }
+
+  /**
+   * Show more comments
+   */
+  onClickShowMore() {
+    this.nbComments += 3;
   }
 
   /**
@@ -70,6 +81,7 @@ export class TvshowDetailsComponent implements OnInit {
       for (let [index, comment] of this.comments.entries()) {
         if (comment.id === id) {
           this.comments.splice(index, 1);
+          if (this.nbComments > 3) this.nbComments--;
           break;
         }
       }

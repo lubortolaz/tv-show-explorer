@@ -71,21 +71,28 @@
       <p *ngIf="comments.length === 0">
         Il n'y a pas encore de commentaire pour cette série...
       </p>
-      <div
-        *ngFor="let comment of comments; let i = index"
-        class="comment-box position-relative"
-      >
-        <!-- <div *ngIf="i < 5"> -->
-        <p>{{ comment.content }}</p>
-        <button class="btn btn-del" (click)="onClickDeleteComment(comment.id)">
-          x
-        </button>
-        <p>
-          Par {{ comment.author }}, le
-          {{ comment.dateCreation | date: "dd/MM/yyyy" }}
-        </p>
-        <!-- </div> -->
+      <div *ngFor="let comment of comments; let i = index">
+        <div *ngIf="i < nbComments" class="comment-box position-relative">
+          <p>{{ comment.content }}</p>
+          <button
+            class="btn btn-del"
+            (click)="onClickDeleteComment(comment.id)"
+          >
+            x
+          </button>
+          <p>
+            Par {{ comment.author }}, le
+            {{ comment.dateCreation | date: "dd/MM/yyyy" }}
+          </p>
+        </div>
       </div>
+      <button
+        class="btn-showmore"
+        *ngIf="nbComments < comments.length"
+        (click)="onClickShowMore()"
+      >
+        Afficher plus...
+      </button>
     </div>
   </div>
 </div>

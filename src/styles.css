@@ -82,6 +82,18 @@ button.btn-del {
   right: 0;
 }
 
+button.btn-showmore {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  text-decoration: underline;
+  float: right;
+  margin-right: 2em;
+}
+button.btn-showmore:hover {
+  color: rgb(255, 255, 255, 0.5);
+}
+
 h2 {
   color: #ae82f4;
 }
