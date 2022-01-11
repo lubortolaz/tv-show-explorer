@@ -14,6 +14,7 @@ import { CommentFormComponent } from './components/comment-form/comment-form.com
 import { ErrorsFormComponent } from './components/errors-form/errors-form.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommentFormComponent,
     ErrorsFormComponent,
     HeaderComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

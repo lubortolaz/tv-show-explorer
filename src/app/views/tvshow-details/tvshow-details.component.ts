@@ -4,7 +4,6 @@ import { Tvshow } from 'src/app/models/tvshow.model';
 import { TvshowService } from '../../services/tvshow/tvshow.service';
 import { CommentService } from '../../services/tvshow/comment.service';
 import { Comment } from 'src/app/models/comment.model';
-import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-tvshow-details',
@@ -45,7 +44,7 @@ export class TvshowDetailsComponent implements OnInit {
    */
   onSubmitNewComment(newComment: Comment) {
     this.commentService.addComment(newComment).then((comment: Comment) => {
-      this.comments.push(comment);
+      this.comments.unshift(comment);
     });
   }
 

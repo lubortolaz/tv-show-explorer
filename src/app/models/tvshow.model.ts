@@ -9,12 +9,12 @@ export class Tvshow {
 
   constructor(id: number, title: string, release: Date, nbSeasons: number, description: string, urlImg: string, review: string) {
     this._id = id;
-    this._title = title;
+    this._title = title.trim();
     this._release = release;
     this._nbSeasons = nbSeasons;
-    this._description = description;
-    this._urlImg = urlImg;
-    this._review = review;
+    this._description = description.trim();
+    this._urlImg = urlImg.trim();
+    this._review = review.trim();
   }
 
   public get id(): number {
@@ -30,7 +30,7 @@ export class Tvshow {
   }
 
   public set title(title: string) {
-    this._title = title;
+    this._title = title.trim();
   }
 
   public get release(): Date {
@@ -54,7 +54,7 @@ export class Tvshow {
   }
 
   public set description(description: string) {
-    this._description = description;
+    this._description = description.trim();
   }
 
   public get urlImg(): string {
@@ -62,7 +62,7 @@ export class Tvshow {
   }
 
   public set urlImg(urlImg: string) {
-    this._urlImg = urlImg;
+    this._urlImg = urlImg.trim();
   }
 
   public get review(): string {
@@ -70,6 +70,6 @@ export class Tvshow {
   }
 
   public set review(review: string) {
-    this._review = review;
+    this._review = review.trim();
   }
 }

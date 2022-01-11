@@ -35,7 +35,7 @@ export class Comment {
   }
 
   public set author(author: string) {
-    this._author = author;
+    this._author = author.trim();
   }
 
   public get content(): string {
@@ -43,7 +43,7 @@ export class Comment {
   }
 
   public set content(content: string) {
-    this._content = content;
+    this._content = content.trim();
   }
 
   public get idTvShow(): number {

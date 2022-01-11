@@ -23,6 +23,10 @@ header {
   padding-bottom: 3em;
 }
 
+footer {
+  padding: 1em;
+}
+
 button.btn-custom {
   background: #444444;
   border-radius: 7px;
@@ -78,10 +82,6 @@ button.btn-del {
   right: 0;
 }
 
-a:hover {
-  background: rgba(83, 83, 83, 0.8);
-}
-
 h2 {
   color: #ae82f4;
 }
@@ -122,6 +122,7 @@ h2 {
 }
 .tvshow-detail-component .comment-box p:first-child {
   margin-bottom: 0.1em;
+  padding-right: 20px;
 }
 .tvshow-detail-component .comment-box p:last-child {
   opacity: 0.5;

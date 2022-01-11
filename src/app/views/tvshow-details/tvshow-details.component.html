@@ -64,13 +64,18 @@
         <span *ngIf="comments.length > 0">({{ comments.length }})</span>
         :
       </h4>
+      <app-comment-form
+        [idTvShow]="tvshow.id"
+        (formSubmitted)="onSubmitNewComment($event)"
+      ></app-comment-form>
       <p *ngIf="comments.length === 0">
         Il n'y a pas encore de commentaire pour cette série...
       </p>
       <div
-        *ngFor="let comment of comments"
+        *ngFor="let comment of comments; let i = index"
         class="comment-box position-relative"
       >
+        <!-- <div *ngIf="i < 5"> -->
         <p>{{ comment.content }}</p>
         <button class="btn btn-del" (click)="onClickDeleteComment(comment.id)">
           x
@@ -79,12 +84,8 @@
           Par {{ comment.author }}, le
           {{ comment.dateCreation | date: "dd/MM/yyyy" }}
         </p>
+        <!-- </div> -->
       </div>
-
-      <app-comment-form
-        [idTvShow]="tvshow.id"
-        (formSubmitted)="onSubmitNewComment($event)"
-      ></app-comment-form>
     </div>
   </div>
 </div>
