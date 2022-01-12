@@ -7,7 +7,11 @@ import { Comment } from 'src/app/models/comment.model';
   providedIn: 'root',
 })
 export class TvshowService {
+  // the list of the tv shows
   tvshows: Tvshow[];
+
+  // to save the last tv show id to simulate the database
+  counter: number;
 
   constructor(private commentService: CommentService) {
     // list of tv shows
@@ -15,6 +19,9 @@ export class TvshowService {
 
     // for developpement mode, create a fake list of tv shows and fake comments
     this.createFakeListOfSuperTvshowsAndComments();
+
+    // in absence of database, use this to set an id unique, even if a tv show is deleted
+    this.counter = this.tvshows.length;
   }
 
   /**
@@ -40,12 +47,9 @@ export class TvshowService {
    */
   addNewTvshow(tvshow: Tvshow): Promise<number> {
     return new Promise<number>((resolve, reject) => {
-      // set id
-      if (this.tvshows.length === 0) {
-        tvshow.id = 0;
-      } else {
-        tvshow.id = this.tvshows[this.tvshows.length - 1].id + 1;
-      }
+      // set unique id
+      tvshow.id = this.counter;
+      this.counter++;
       this.tvshows.push(tvshow);
       resolve(tvshow.id);
     });

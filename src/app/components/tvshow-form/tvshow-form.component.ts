@@ -88,6 +88,11 @@ export class TvshowFormComponent implements OnInit {
    * On form submission, check if it's valid and emit it
    */
   onSubmitForm() {
+    //this.form.get('title') = this.tvshow.title.trim();
+
+    this.form.value.title = this.form.value.title.trim();
+    this.tvshow.title.trim();
+
     if (this.form.valid) {
       // set a fake img src if empty
       if (this.tvshow.urlImg == '') {

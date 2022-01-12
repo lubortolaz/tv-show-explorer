@@ -20,9 +20,9 @@ export class LoginComponent implements OnInit {
 
   // initialization tasks
   ngOnInit(): void {
-    // prefill the fields for development
+    // prefill the fields for development tests
     this.username = 'Administrateur';
-    this.password = 'fsdfsdqfeqrfergdfgdfgser';
+    this.password = 'azerty';
   }
 
   /**
@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
     this.authService
       .signIn(this.username, this.password)
       .then(() => {
-        console.log('connection ok');
         // if connection ok, redirect user to tv-shows list
         this.router.navigateByUrl('/tvshows');
       })

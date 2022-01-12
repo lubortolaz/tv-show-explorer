@@ -16,7 +16,10 @@ export class CommentFormComponent implements OnInit {
   newComment!: Comment;
   form!: FormGroup;
 
+  // id of the tv show given by the parent
   @Input() idTvShow!: number;
+
+  // submission of the form
   @Output() formSubmitted: EventEmitter<Comment>;
 
   constructor(private fb: FormBuilder) {

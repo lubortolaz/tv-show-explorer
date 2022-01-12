@@ -28,8 +28,8 @@ export class AuthService {
    */
   signIn(username: string, password: string): Promise<void> {
     const users = [
-      { username: 'Administrateur', password: 'fsdfsdqfeqrfergdfgdfgser' },
-      { username: 'Toto', password: 'Tata' },
+      { username: 'Administrateur', password: 'azerty' },
+      { username: 'Lucie', password: 'justepourtester' },
     ];
     return new Promise<void>((resolve, reject) => {
       users.forEach((user) => {

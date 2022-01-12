@@ -31,10 +31,12 @@ export class TvshowDetailsComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
+    // get the tv show to display
     this.tvshowService.getTvshowById(+id!).then((tvshow: Tvshow) => {
       this.tvshow = tvshow;
     });
 
+    // get the comments to display
     this.commentService
       .getAllCommentsByIdTvShow(+id!)
       .then((comments: Comment[]) => {
@@ -66,7 +68,7 @@ export class TvshowDetailsComponent implements OnInit {
   onClickBtnDelete(id: number) {
     if (confirm('Supprimer la série et tous ses commentaires ?')) {
       this.tvshowService.deleteTvshowById(id).then(() => {
-        //this.tvshows.splice(index, 1);
+        // redirect to the list of tv shows
         this.router.navigateByUrl('/tvshows');
       });
     }
