@@ -1,27 +1,88 @@
-# TvshowExplorer
+# Tv-show Explorer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.
+Ce projet a été généré avec Angular CLI version 13.0.4.
 
-## Development server
+## Contexte :
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Projet réalisé dans le cadre de ma formation DWWM (2021/2022).
 
-## Code scaffolding
+## Enoncé :
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+L'application doit permettre de référencer des séries et de partager une critique autour de chaque série.
 
-## Build
+**Détails :**
+- interface sécurisée par une page d’authentification
+- une page permettant de lister les séries (id, nom, date)
+- dans la liste, permettre d’accéder rapidement à la vue détaillée, à l'édition, à la suppression de chaque série
+- une vue détaillée affichant la série et les commentaires associés
+- possibilité de créer une nouvelle série sur une page dédiée
+- une page d’erreur 404
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Réalisation :
 
-## Running unit tests
+### Structure du projet :
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Les vues
 
-## Running end-to-end tests
+```
+ng g c views/tvshows-list
+ng g c views/tvshow-details
+ng g c views/tvshow-new
+ng g c views/tvshow-edit
+ng g c views/error
+ng g c views/login
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Les composants
 
-## Further help
+```
+ng g c components/tvshow-form
+ng g c components/comment-form
+ng g c components/errors-form
+ng g c components/header
+ng g c components/footer
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+3. Les modèles
+
+```
+mkdir src/app/models/
+touch src/app/models/tvshow.model.ts
+touch src/app/models/comment.model.ts
+```
+
+4. Les services
+
+```
+ng g s services/auth/auth
+ng g s services/tvshow/tvshow
+ng g s services/tvshow/comment
+```
+
+5. Le guard
+
+```
+ng g g guards/auth/auth --implements CanActivate
+```
+
+### Dépendances :
+
+- Bootstrap
+
+### Développement :
+
+- Gérer l'authentification avec le auth.service, la vue login et le guard
+- Ajouter un bouton de déconnexion
+- Créer les modèles `tvshow` et `comment`
+- Ajouter des fausses données (absence de BDD)
+- Coder la vue principale avec la liste des séries
+- Coder la vue "ajouter série" et le formulaire associé
+- Ajouter la possibilité d'édition d'une série
+- Coder la vue de "détail" d'une série et des commentaires associés
+- Coder la partie "ajout de commentaire"
+
+Bonus :
+- Ajout d'un "voir plus" pour l'affichage des commentaires
+- Ajout de la possibilité de supprimer les commentaires
+
+
